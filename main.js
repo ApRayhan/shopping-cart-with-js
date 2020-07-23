@@ -1,14 +1,31 @@
-const plusBtn = document.getElementById('iphonePlus');
-plusBtn.addEventListener('click', function() {
+const plusBtnIphone = document.getElementById('iphonePlus');
+plusBtnIphone.addEventListener('click', function() {
+	upadatTotalProduct('totalIphone');
+	updateTotalPrice('iphoneAmount', 1200);
+});
+
+const plusBtnCase = document.getElementById('iphoneCasePlus');
+plusBtnCase.addEventListener('click', function() {
+	upadatTotalProduct('totalIphoneCase');
+	updateTotalPrice('caseAmount', 50);
+});
+
+function upadatTotalProduct(id) {
 	// Catch The input Value And Change it
-	const correntTotal = document.getElementById('totalIphone').value;
+	const correntTotal = document.getElementById(id).value;
 	const correntTotalInNumber = parseFloat(correntTotal);
 
-	document.getElementById('totalIphone').value = correntTotalInNumber + 1;
+	document.getElementById(id).value = correntTotalInNumber + 1;
+}
 
-	// Sum The Total Amount
-	const correntAmount = document.getElementById('iphoneAmount').innerText;
+function updateTotalPrice(id, price) {
+	// Sum Single product Amount
+	const correntAmount = document.getElementById(id).innerText;
 	const correntAmountInNumber = parseFloat(correntAmount);
 
-	document.getElementById('iphoneAmount').innerText = correntAmountInNumber + 1219;
-});
+	document.getElementById(id).innerText = correntAmountInNumber + price;
+
+	// Sum Total product Amount
+	const correntTotal = document.getElementById('totalBill').innerText;
+	const correntTotalInNumber = parseFloat(correntTotal);
+}
