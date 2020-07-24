@@ -25,7 +25,50 @@ function updateTotalPrice(id, price) {
 
 	document.getElementById(id).innerText = correntAmountInNumber + price;
 
-	// Sum Total product Amount
-	const correntTotal = document.getElementById('totalBill').innerText;
-	const correntTotalInNumber = parseFloat(correntTotal);
+	// Sum Total Bill
+	const total = document.getElementById('totalBill').innerText;
+	const totalNumber = parseFloat(total);
+
+	document.getElementById('totalBill').innerText = totalNumber + price;
+}
+
+// Cancle One product From Card
+
+// Minus One Iphone
+const minusIphone = document.getElementById('iphoneMinus');
+minusIphone.addEventListener('click', function() {
+	minusOneProduct('totalIphone');
+	minusAmount('iphoneAmount', 'totalBill', 1200);
+});
+
+// Minus One Case
+const minusCase = document.getElementById('iphoneCaseMinus');
+minusCase.addEventListener('click', function() {
+	minusOneProduct('totalIphoneCase');
+	minusAmount('caseAmount', 'totalBill', 50);
+});
+
+// Minus One Function
+function minusOneProduct(id) {
+	const totalProduct = document.getElementById(id).value;
+	const totalProductNumber = parseFloat(totalProduct);
+
+	if (totalProduct > 0) {
+		document.getElementById(id).value = totalProductNumber - 1;
+	}
+}
+
+// Minus Single Amount And Total Bill
+function minusAmount(singleId, totalId, price) {
+	// Minus Single Amount
+	const singleAmount = document.getElementById(singleId).innerText;
+	const singleAmountNumber = parseFloat(singleAmount);
+
+	if (singleAmountNumber > 0) {
+		document.getElementById(singleId).innerText = singleAmountNumber - price;
+
+		const totalBill = document.getElementById(totalId).innerText;
+		const totalBillNumber = parseFloat(totalBill);
+		document.getElementById(totalId).innerText = totalBillNumber - price;
+	}
 }
